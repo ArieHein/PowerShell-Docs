@@ -105,7 +105,7 @@
         }
 
         # Because DaysUntilStale and StaleSinceDate belong to different
-        # parameter sets, remove DaysUntilStale before adding  StaleSinceDate.
+        # parameter sets, remove DaysUntilStale before adding StaleSinceDate.
         if ($Parameters.ContainsKey('DaysUntilStale')) {
           $Message = @(
             'Specified both days_until_stale and stale_since_date parameters;'
@@ -133,7 +133,7 @@
       }
       Process = {
         param($Parameters, $Value, $ErrorTarget)
-        
+
         if ([string]::IsNullOrEmpty($Value)) {
           return $Parameters
         }
