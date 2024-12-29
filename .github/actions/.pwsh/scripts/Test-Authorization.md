@@ -8,7 +8,7 @@ Checks if a user may perform an action.
 
 ### Branch (Default)
 
-```syntax
+```Syntax
 .\Test-Authorization.ps1
     -Owner <string>
     -Repo <string>
@@ -20,7 +20,7 @@ Checks if a user may perform an action.
 
 ### Path
 
-```syntax
+```Syntax
 .\Test-Authorization.ps1
     -Owner <string>
     -Repo <string>
