@@ -160,8 +160,8 @@ For more information, review the [source code][utility-Write-HostParameter]
 [utility-Format-ConsoleStyle]:        ./functions/utility/Format-ConsoleStyle.ps1
 [utility-Format-GHAConsoleText]:      ./functions/utility/Format-GHAConsoleText.ps1
 [utility-Get-GHAConsoleError]:        ./functions/utility/Get-GHAConsoleError.ps1
-[utility-Get-ActionScriptParameter]:              ./functions/utility/Get-ActionScriptParameter.ps1
-[utility-Get-StaleDocument]: ./functions/utility/Get-StaleDocument.ps1
+[utility-Get-ActionScriptParameter]:  ./functions/utility/Get-ActionScriptParameter.ps1
+[utility-Get-StaleDocument]:          ./functions/utility/Get-StaleDocument.ps1
 [utility-Get-VersionedContentStatus]: ./functions/utility/Get-VersionedContentStatus.ps1
 [utility-New-CliErrorRecord]:         ./functions/utility/New-CliErrorRecord.ps1
 [utility-New-InvalidParameterError]:  ./functions/utility/New-InvalidParameterError.ps1
