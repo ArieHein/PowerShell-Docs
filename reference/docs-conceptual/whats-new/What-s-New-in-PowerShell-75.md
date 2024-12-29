@@ -1,13 +1,13 @@
 ---
 title: What's New in PowerShell 7.5
 description: New features and changes released in PowerShell 7.5
-ms.date: 09/24/2024
+ms.date: 12/05/2024
 ---
 
 # What's New in PowerShell 7.5
 
-PowerShell 7.5-preview.5 includes the following features, updates, and breaking changes. PowerShell
-7.5 is built on .NET 9.0.100-rc.1.
+PowerShell 7.5-rc.1 includes the following features, updates, and breaking changes. PowerShell
+7.5 is built on .NET 9.0.100 GA release.
 
 For a complete list of changes, see the [CHANGELOG][chg] in the GitHub repository.
 
@@ -24,10 +24,10 @@ For a complete list of changes, see the [CHANGELOG][chg] in the GitHub repositor
 
 ## Updated modules
 
-PowerShell 7.5-preview.5 includes the following updated modules:
+PowerShell 7.5-rc.1 includes the following updated modules:
 
-- **Microsoft.PowerShell.PSResourceGet** v1.1.0-preview2
-- **PSReadLine** v2.3.5
+- **Microsoft.PowerShell.PSResourceGet** v1.1.0-RC2
+- **PSReadLine** v2.3.6
 
 ## Tab completion improvements
 
@@ -57,9 +57,9 @@ Many thanks to **@ArmaanMcleod** and others for all their work to improve tab co
 
 ## Web cmdlets improvements
 
-- Fix to allow `-PassThru` and `-Outfile` work together ([#24086][24086]) (Thanks @jshigetomi!)
-- Add `OutFile` property in `WebResponseObject` ([#24047][24047]) (Thanks @jshigetomi!)
-- Show filename in `Invoke-WebRequest -OutFile -Verbose` ([#24041][24041]) (Thanks @jshigetomi!)
+- Fix to allow `-PassThru` and `-Outfile` work together ([#24086][24086])
+- Add `OutFile` property in `WebResponseObject` ([#24047][24047])
+- Show filename in `Invoke-WebRequest -OutFile -Verbose` ([#24041][24041])
 - Fix WebCmdlets when `-Body` is specified but `ContentType` is not ([#23952][23952]) (Thanks
   @CarloToso!)
 - Fix `Invoke-WebRequest` to report correct size when `-Resume` is specified ([#20207][20207])
@@ -137,19 +137,115 @@ Many thanks to **@ArmaanMcleod** and others for all their work to improve tab co
 ## Experimental features
 
 The following experimental features were converted to mainstream features in
-PowerShell 7.5-preview.5:
+PowerShell 7.5-rc.1:
 
 - [PSCommandNotFoundSuggestion][02]
 - [PSCommandWithArgs][03]
 - [PSModuleAutoLoadSkipOfflineFiles][04]
 
-The following experimental features are included in PowerShell 7.5-preview.5:
+The following experimental features are included in PowerShell 7.5-rc.1:
 
 - [PSRedirectToVariable][05] - Allow redirecting to a variable ([#20381][20381])
 - [PSNativeWindowsTildeExpansion][01] - Add tilde expansion for windows native executables
   ([#20402][20402]) (Thanks @domsleee!)
 - [PSSerializeJSONLongEnumAsNumber][06] - `ConvertTo-Json` now treats large enums as numbers
   ([#20999][20999]) (Thanks @jborean93!)
+
+## Performance improvements
+
+PowerShell 7.5-rc.1 included [PR#23901][23901] from @jborean93 that improves the performance of the
+`+=` operation for an array of objects.
+
+The following example measures the performance for different methods of adding elements to an array.
+
+```powershell
+$tests = @{
+    'Direct Assignment' = {
+        param($count)
+
+    $result = foreach($i in 1..$count) {
+            $i
+        }
+    }
+    'List<T>.Add(T)' = {
+        param($count)
+
+        $result = [Collections.Generic.List[int]]::new()
+        foreach($i in 1..$count) {
+            $result.Add($i)
+        }
+    }
+    'Array+= Operator' = {
+        param($count)
+
+        $result = @()
+        foreach($i in 1..$count) {
+            $result += $i
+        }
+    }
+}
+
+5kb, 10kb | ForEach-Object {
+    $groupResult = foreach($test in $tests.GetEnumerator()) {
+        $ms = (Measure-Command { & $test.Value -Count $_ }).TotalMilliseconds
+
+[pscustomobject]@{
+            CollectionSize    = $_
+            Test              = $test.Key
+            TotalMilliseconds = [math]::Round($ms, 2)
+        }
+
+[GC]::Collect()
+        [GC]::WaitForPendingFinalizers()
+    }
+
+$groupResult = $groupResult | Sort-Object TotalMilliseconds
+    $groupResult | Select-Object *, @{
+        Name       = 'RelativeSpeed'
+        Expression = {
+            $relativeSpeed = $_.TotalMilliseconds / $groupResult[0].TotalMilliseconds
+            $speed = [math]::Round($relativeSpeed, 2).ToString() + 'x'
+            if ($speed -eq '1x') { $speed } else { $speed + ' slower' }
+        }
+    } | Format-Table -AutoSize
+}
+```
+
+When you run the script in PowerShell 7.4.6, you see that using the `+=` operator is the slowest
+method.
+
+```Output
+CollectionSize Test                TotalMilliseconds RelativeSpeed
+-------------- ----                ----------------- -------------
+          5120 Direct Assignment                4.17 1x
+          5120 List<T>.Add(T)                  90.79 21.77x slower
+          5120 Array+= Operator               342.58 82.15x slower
+
+
+CollectionSize Test                TotalMilliseconds RelativeSpeed
+-------------- ----                ----------------- -------------
+         10240 Direct Assignment                0.64 1x
+         10240 List<T>.Add(T)                 184.10 287.66x slower
+         10240 Array+= Operator              1668.13 2606.45x slower
+```
+
+When you run the script in PowerShell 7.5-rc.1, you see that using the `+=` operator is much faster
+than PowerShell 7.4.6. Now, it's also faster than using the `List<T>.Add(T)` method.
+
+```Output
+CollectionSize Test                TotalMilliseconds RelativeSpeed
+-------------- ----                ----------------- -------------
+          5120 Direct Assignment                4.71 1x
+          5120 Array+= Operator                40.42 8.58x slower
+          5120 List<T>.Add(T)                  92.17 19.57x slower
+
+
+CollectionSize Test                TotalMilliseconds RelativeSpeed
+-------------- ----                ----------------- -------------
+         10240 Direct Assignment                1.76 1x
+         10240 Array+= Operator               104.73 59.51x slower
+         10240 List<T>.Add(T)                 173.00 98.3x slower
+```
 
 <!-- end of content -->
 <!-- reference links -->
