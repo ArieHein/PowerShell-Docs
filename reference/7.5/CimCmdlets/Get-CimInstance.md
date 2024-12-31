@@ -18,17 +18,17 @@ Gets the CIM instances of a class from a CIM server.
 ### ClassNameComputerSet (Default)
 
 ```
-Get-CimInstance [-ClassName] <String> [-ComputerName <String[]>] [-KeyOnly] [-Namespace <String>]
- [-OperationTimeoutSec <UInt32>] [-QueryDialect <String>] [-Shallow] [-Filter <String>]
- [-Property <String[]>] [<CommonParameters>]
+Get-CimInstance [-ClassName] <String> [-ComputerName <String[]>] [-KeyOnly]
+ [-Namespace <String>] [-OperationTimeoutSec <UInt32>] [-QueryDialect <String>]
+ [-Shallow] [-Filter <String>] [-Property <String[]>] [<CommonParameters>]
 ```
 
 ### ResourceUriSessionSet
 
 ```
-Get-CimInstance -CimSession <CimSession[]> -ResourceUri <Uri> [-KeyOnly] [-Namespace <String>]
- [-OperationTimeoutSec <UInt32>] [-Shallow] [-Filter <String>] [-Property <String[]>]
- [<CommonParameters>]
+Get-CimInstance -CimSession <CimSession[]> -ResourceUri <Uri> [-KeyOnly]
+ [-Namespace <String>] [-OperationTimeoutSec <UInt32>] [-Shallow] [-Filter <String>]
+ [-Property <String[]>] [<CommonParameters>]
 ```
 
 ### QuerySessionSet
@@ -42,31 +42,31 @@ Get-CimInstance -CimSession <CimSession[]> [-ResourceUri <Uri>] [-Namespace <Str
 ### ClassNameSessionSet
 
 ```
-Get-CimInstance -CimSession <CimSession[]> [-ClassName] <String> [-KeyOnly] [-Namespace <String>]
- [-OperationTimeoutSec <UInt32>] [-QueryDialect <String>] [-Shallow] [-Filter <String>]
- [-Property <String[]>] [<CommonParameters>]
+Get-CimInstance -CimSession <CimSession[]> [-ClassName] <String> [-KeyOnly]
+ [-Namespace <String>]  [-OperationTimeoutSec <UInt32>] [-QueryDialect <String>]
+ [-Shallow] [-Filter <String>] [-Property <String[]>] [<CommonParameters>]
 ```
 
 ### CimInstanceSessionSet
 
 ```
-Get-CimInstance -CimSession <CimSession[]> [-ResourceUri <Uri>] [-OperationTimeoutSec <UInt32>]
- [-InputObject] <CimInstance> [<CommonParameters>]
+Get-CimInstance -CimSession <CimSession[]> [-ResourceUri <Uri>]
+ [-OperationTimeoutSec <UInt32>] [-InputObject] <CimInstance> [<CommonParameters>]
 ```
 
 ### CimInstanceComputerSet
 
 ```
-Get-CimInstance [-ResourceUri <Uri>] [-ComputerName <String[]>] [-OperationTimeoutSec <UInt32>]
- [-InputObject] <CimInstance> [<CommonParameters>]
+Get-CimInstance [-ResourceUri <Uri>] [-ComputerName <String[]>]
+ [-OperationTimeoutSec <UInt32>] [-InputObject] <CimInstance> [<CommonParameters>]
 ```
 
 ### ResourceUriComputerSet
 
 ```
-Get-CimInstance -ResourceUri <Uri> [-ComputerName <String[]>] [-KeyOnly] [-Namespace <String>]
- [-OperationTimeoutSec <UInt32>] [-Shallow] [-Filter <String>] [-Property <String[]>]
- [<CommonParameters>]
+Get-CimInstance -ResourceUri <Uri> [-ComputerName <String[]>] [-KeyOnly]
+ [-Namespace <String>] [-OperationTimeoutSec <UInt32>] [-Shallow] [-Filter <String>]
+ [-Property <String[]>] [<CommonParameters>]
 ```
 
 ### QueryComputerSet
@@ -140,11 +140,11 @@ Get-CimInstance -ClassName Win32_Process -Filter "Name like 'P%'"
 ### Example 5: Get the CIM instances with only key properties filled in
 
 This example creates a new CIM instance in memory for a class named **Win32_Process** with
-the key property `@{ "Handle"=0 }` and stores it in a variable named `$x`. The variable is passed as
-a CIM instance to the `Get-CimInstance` cmdlet to get a particular instance.
+the key property `@{ "Handle"=0 }` and stores it in a variable named `$x`. The variable is passed
+as a CIM instance to the `Get-CimInstance` cmdlet to get a particular instance.
 
 ```powershell
-$x = New-CimInstance -ClassName Win32_Process -Namespace root\cimv2 -Property @{ "Handle"=0 } -Key Handle -ClientOnly
+$x = New-CimInstance -ClassName Win32_Process -Namespace root\cimv2 -Property @{"Handle"=0} -Key Handle -ClientOnly
 Get-CimInstance -CimInstance $x
 ```
 
@@ -156,7 +156,7 @@ the variables `$x` and `$y`. The variable `$x` is then formatted in a table cont
 
 ```powershell
 $x,$y = Get-CimInstance -ClassName Win32_Process
-$x | Format-Table -Property Name,KernelModeTime -AutoSize
+$x | Format-Table -Property Name, KernelModeTime -AutoSize
 ```
 
 ```Output
@@ -190,8 +190,8 @@ This example retrieves only a subset of properties, which reduces the size of th
 traffic.
 
 ```powershell
-Get-CimInstance -Class Win32_Process -Property Name,KernelModeTime
-$x = Get-CimInstance -Class Win32_Process -Property Name,KernelModeTime
+Get-CimInstance -Class Win32_Process -Property Name, KernelModeTime
+$x = Get-CimInstance -Class Win32_Process -Property Name, KernelModeTime
 $x | Invoke-CimMethod -MethodName GetOwner
 ```
 
@@ -201,9 +201,9 @@ for example `Set-CimInstance` or `Invoke-CimMethod`.
 ### Example 10: Get the CIM instance using CIM session
 
 This example creates a CIM session on the computers named **Server01** and **Server02** using the
-`New-CimSession` cmdlet and stores the session information in a variable named `$s`. The contents of
-the variable are then passed to `Get-CimInstance` by using the **CimSession** parameter, to get the
-CIM instances of the class named **Win32_ComputerSystem**.
+`New-CimSession` cmdlet and stores the session information in a variable named `$s`. The contents
+of the variable are then passed to `Get-CimInstance` by using the **CimSession** parameter, to get
+the CIM instances of the class named **Win32_ComputerSystem**.
 
 ```powershell
 $s = New-CimSession -ComputerName Server01,Server02
@@ -216,7 +216,7 @@ Get-CimInstance -ClassName Win32_ComputerSystem -CimSession $s
 
 Specifies the CIM session to use for this cmdlet. Enter a variable that contains the CIM session or
 a command that creates or gets the CIM session, such as the `New-CimSession` or `Get-CimSession`
-cmdlets. For more information, see [about_CimSession](../Microsoft.PowerShell.Core/About/about_CimSession.md).
+cmdlets. For more information, see [about_CimSession][01].
 
 ```yaml
 Type: Microsoft.Management.Infrastructure.CimSession[]
@@ -302,8 +302,8 @@ than retrieving all instances and then filtering them.
 The **InputObject** parameter doesn't enumerate over collections. If a collection is passed, an
 error is thrown. When working with collections, pipe the input to enumerate the values.
 
-If the CIM class does not implement the get operation, then specifying the **InputObject** parameter
-returns an error.
+If the CIM class does not implement the get operation, then specifying the **InputObject**
+parameter returns an error.
 
 ```yaml
 Type: Microsoft.Management.Infrastructure.CimInstance
@@ -322,8 +322,8 @@ Accept wildcard characters: False
 Indicates that only objects with key properties populated are returned. Specifying the **KeyOnly**
 parameter reduces the amount of data transferred over the network.
 
-Use the **KeyOnly** parameter to return only a small portion of the object, which can be used for other
-operations, such as the `Set-CimInstance` or `Get-CimAssociatedInstance` cmdlets.
+Use the **KeyOnly** parameter to return only a small portion of the object, which can be used for
+other operations, such as the `Set-CimInstance` or `Get-CimAssociatedInstance` cmdlets.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -359,9 +359,9 @@ Accept wildcard characters: False
 
 ### -OperationTimeoutSec
 
-Specifies the amount of time that the cmdlet waits for a response from the computer. By default, the
-value of this parameter is 0, which means that the cmdlet uses the default timeout value for the
-server.
+Specifies the amount of time that the cmdlet waits for a response from the computer. By default,
+the value of this parameter is 0, which means that the cmdlet uses the default timeout value for
+the server.
 
 If the **OperationTimeoutSec** parameter is set to a value less than the robust connection retry
 timeout of 3 minutes, network failures that last more than the value of the **OperationTimeoutSec**
@@ -407,8 +407,8 @@ backslash character. If the value specified uses the WQL **LIKE** operator, then
 the following characters by enclosing them in square brackets `[]`: percent `%`, underscore `_`,
 or opening square bracket `[`.
 
-You cannot use a metadata query to retrieve a list of classes or an event query. To retrieve a list
-of classes, use the `Get-CimClass` cmdlet. To retrieve an event query, use the
+You cannot use a metadata query to retrieve a list of classes or an event query. To retrieve a
+list of classes, use the `Get-CimClass` cmdlet. To retrieve an event query, use the
 `Register-CimIndicationEvent` cmdlet.
 
 You can specify the query dialect using the **QueryDialect** parameter.
@@ -497,7 +497,7 @@ Accept wildcard characters: False
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
 -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
--WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
+-WarningAction, and -WarningVariable. For more information, see [about_CommonParameters][02].
 
 ## INPUTS
 
@@ -523,18 +523,30 @@ This cmdlet is only available on Windows platforms.
 
 ## RELATED LINKS
 
-[Format-Table](../microsoft.powershell.utility/format-table.md)
+[Format-Table][03]
 
-[Get-CimAssociatedInstance](Get-CimAssociatedInstance.md)
+[Get-CimAssociatedInstance][04]
 
-[Get-CimClass](Get-CimClass.md)
+[Get-CimClass][05]
 
-[Invoke-CimMethod](invoke-cimmethod.md)
+[Invoke-CimMethod][06]
 
-[New-CimInstance](New-CimInstance.md)
+[New-CimInstance][07]
 
-[Register-CimIndicationEvent](Register-CimIndicationEvent.md)
+[Register-CimIndicationEvent][08]
 
-[Remove-CimInstance](remove-ciminstance.md)
+[Remove-CimInstance][09]
 
-[Set-CimInstance](Set-CimInstance.md)
+[Set-CimInstance][10]
+
+<!-- link references -->
+[01]: ../Microsoft.PowerShell.Core/About/about_CimSession.md
+[02]: https://go.microsoft.com/fwlink/?LinkID=113216
+[03]: ../Microsoft.PowerShell.Utility/Format-Table.md
+[04]: Get-CimAssociatedInstance.md
+[05]: Get-CimClass.md
+[06]: Invoke-CimMethod.md
+[07]: New-CimInstance.md
+[08]: Register-CimIndicationEvent.md
+[09]: Remove-CimInstance.md
+[10]: Set-CimInstance.md

@@ -17,33 +17,33 @@ Modifies a CIM instance on a CIM server by calling the ModifyInstance method of 
 ### CimInstanceComputerSet (Default)
 
 ```
-Set-CimInstance [-ComputerName <String[]>] [-ResourceUri <Uri>] [-OperationTimeoutSec <UInt32>]
- [-InputObject] <CimInstance> [-Property <IDictionary>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-CimInstance [-ComputerName <String[]>] [-ResourceUri <Uri>]
+ [-OperationTimeoutSec <UInt32>] [-InputObject] <CimInstance> [-Property <IDictionary>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CimInstanceSessionSet
 
 ```
-Set-CimInstance -CimSession <CimSession[]> [-ResourceUri <Uri>] [-OperationTimeoutSec <UInt32>]
- [-InputObject] <CimInstance> [-Property <IDictionary>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-CimInstance -CimSession <CimSession[]> [-ResourceUri <Uri>]
+ [-OperationTimeoutSec <UInt32>] [-InputObject] <CimInstance> [-Property <IDictionary>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### QuerySessionSet
 
 ```
-Set-CimInstance -CimSession <CimSession[]> [-Namespace <String>] [-OperationTimeoutSec <UInt32>]
- [-Query] <String> [-QueryDialect <String>] -Property <IDictionary> [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-CimInstance -CimSession <CimSession[]> [-Namespace <String>]
+ [-OperationTimeoutSec <UInt32>] [-Query] <String> [-QueryDialect <String>]
+ -Property <IDictionary> [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### QueryComputerSet
 
 ```
-Set-CimInstance [-ComputerName <String[]>] [-Namespace <String>] [-OperationTimeoutSec <UInt32>]
- [-Query] <String> [-QueryDialect <String>] -Property <IDictionary> [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-CimInstance [-ComputerName <String[]>] [-Namespace <String>]
+ [-OperationTimeoutSec <UInt32>] [-Query] <String> [-QueryDialect <String>]
+ -Property <IDictionary> [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -151,8 +151,8 @@ Set-CimInstance -CimInstance $x -Property @{VariableValue="somevalue"} -PassThru
 
 ### -CimSession
 
-Runs the cmdlets on a remote computer. Enter a computer name or a session object, such as the output
-of a `New-CimSession` or `Get-CimSession` cmdlet.
+Runs the cmdlets on a remote computer. Enter a computer name or a session object, such as the
+output of a `New-CimSession` or `Get-CimSession` cmdlet.
 
 ```yaml
 Type: Microsoft.Management.Infrastructure.CimSession[]
@@ -213,9 +213,9 @@ Accept wildcard characters: False
 
 ### -Namespace
 
-Specifies the namespace for the CIM operation. The default namespace is root/cimv2. You can use tab
-completion to browse the list of namespaces, because PowerShell gets a list of namespaces from the
-local WMI server to provide the list of namespaces.
+Specifies the namespace for the CIM operation. The default namespace is root/cimv2. You can use
+tab completion to browse the list of namespaces, because PowerShell gets a list of namespaces from
+the local WMI server to provide the list of namespaces.
 
 ```yaml
 Type: System.String
@@ -231,9 +231,9 @@ Accept wildcard characters: False
 
 ### -OperationTimeoutSec
 
-Specifies the amount of time that the cmdlet waits for a response from the computer. By default, the
-value of this parameter is 0, which means that the cmdlet uses the default timeout value for the
-server.
+Specifies the amount of time that the cmdlet waits for a response from the computer. By default,
+the value of this parameter is 0, which means that the cmdlet uses the default timeout value for
+the server.
 
 If the **OperationTimeoutSec** parameter is set to a value less than the robust connection retry
 timeout of 3 minutes, network failures that last more than the value of the **OperationTimeoutSec**
@@ -271,9 +271,9 @@ Accept wildcard characters: False
 
 ### -Property
 
-Specifies the properties of the CIM instance as a hash table (using name-value pairs). Only the
-properties specified using this parameter are changed. Other properties of the CIM instance are not
-changed.
+Specifies the properties of the CIM instance as a hash table (using name-value pairs).
+Only the properties specified using this parameter are changed. Other properties of the
+CIM instance are not changed.
 
 ```yaml
 Type: System.Collections.IDictionary
@@ -289,8 +289,8 @@ Accept wildcard characters: False
 
 ### -Query
 
-Specifies a query to run on the CIM server to retrieve CIM instances on which to run the cmdlet. You
-can specify the query dialect using the QueryDialect parameter.
+Specifies a query to run on the CIM server to retrieve CIM instances on which to run the cmdlet.
+You can specify the query dialect using the QueryDialect parameter.
 
 If the value specified contains double quotes (`"`), single quotes (`'`), or a backslash (`\`), you
 must escape those characters by prefixing them with the backslash (`\`) character. If the value
@@ -396,8 +396,7 @@ Accept wildcard characters: False
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
 -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
--WarningAction, and -WarningVariable. For more information, see
-[about_CommonParameters](../Microsoft.PowerShell.Core/About/about_CommonParameters.md).
+-WarningAction, and -WarningVariable. For more information, see [about_CommonParameters][01].
 
 ## INPUTS
 
@@ -424,8 +423,14 @@ This cmdlet is only available on Windows platforms.
 
 ## RELATED LINKS
 
-[Get-CimInstance](get-ciminstance.md)
+[Get-CimInstance][02]
 
-[New-CimInstance](New-CimInstance.md)
+[New-CimInstance][03]
 
-[Remove-CimInstance](remove-ciminstance.md)
+[Remove-CimInstance][04]
+
+<!-- link references -->
+[01]: ../Microsoft.PowerShell.Core/About/about_CommonParameters.md
+[02]: Get-CimInstance.md
+[03]: New-CimInstance.md
+[04]: Remove-CimInstance.md

@@ -18,8 +18,8 @@ Specifies advanced options for the New-CimSession cmdlet.
 ### ProtocolTypeSet (Default)
 
 ```
-New-CimSessionOption [-Protocol] <ProtocolType> [-UICulture <CultureInfo>] [-Culture <CultureInfo>]
- [<CommonParameters>]
+New-CimSessionOption [-Protocol] <ProtocolType> [-UICulture <CultureInfo>]
+ [-Culture <CultureInfo>] [<CommonParameters>]
 ```
 
 ### WSManParameterSet
@@ -28,24 +28,25 @@ New-CimSessionOption [-Protocol] <ProtocolType> [-UICulture <CultureInfo>] [-Cul
 New-CimSessionOption [-NoEncryption] [-SkipCACheck] [-SkipCNCheck] [-SkipRevocationCheck]
  [-EncodePortInServicePrincipalName] [-Encoding <PacketEncoding>] [-HttpPrefix <Uri>]
  [-MaxEnvelopeSizeKB <UInt32>] [-ProxyAuthentication <PasswordAuthenticationMechanism>]
- [-ProxyCertificateThumbprint <String>] [-ProxyCredential <PSCredential>] [-ProxyType <ProxyType>]
- [-UseSsl] [-UICulture <CultureInfo>] [-Culture <CultureInfo>] [<CommonParameters>]
+ [-ProxyCertificateThumbprint <String>] [-ProxyCredential <PSCredential>]
+ [-ProxyType <ProxyType>] [-UseSsl] [-UICulture <CultureInfo>] [-Culture <CultureInfo>]
+ [<CommonParameters>]
 ```
 
 ### DcomParameterSet
 
 ```
-New-CimSessionOption [-Impersonation <ImpersonationType>] [-PacketIntegrity] [-PacketPrivacy]
- [-UICulture <CultureInfo>] [-Culture <CultureInfo>] [<CommonParameters>]
+New-CimSessionOption [-Impersonation <ImpersonationType>] [-PacketIntegrity]
+ [-PacketPrivacy] [-UICulture <CultureInfo>] [-Culture <CultureInfo>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 
 > **This cmdlet is only available on the Windows platform.**
 
-The `New-CimSessionOption` cmdlet creates an instance of a CIM session options object. You use a CIM
-session options object as input to the `New-CimSession` cmdlet to specify the options for a CIM
-session.
+The `New-CimSessionOption` cmdlet creates an instance of a CIM session options object.
+You use a CIM session options object as input to the `New-CimSession` cmdlet to specify the
+options for a CIM session.
 
 This cmdlet has two parameter sets, one for WsMan options and one for Distributed Component Object
 Model (DCOM) options. Depending on which parameters you use, the cmdlet returns either an instance
@@ -95,7 +96,7 @@ parameter using one of the following formats:
 
 - A culture name in `<languagecode2>-<country/regioncode2>` format such as "EN-US".
 - A variable that contains a **CultureInfo** object.
-- A command that gets a **CultureInfo** object, such as [Get-Culture](../Microsoft.PowerShell.Utility/Get-Culture.md)
+- A command that gets a **CultureInfo** object, such as [Get-Culture][01].
 
 ```yaml
 Type: System.Globalization.CultureInfo
@@ -321,7 +322,7 @@ Accept wildcard characters: False
 Specifies the credentials to use for proxy authentication. Enter one of the following:
 
 - A variable that contains a PSCredential object.
-- A command that gets a PSCredential object, such as `Get-Credential`
+- A command that gets a PSCredential object, such as `Get-Credential`.
 
 If this option is not set, then you cannot specify any credentials.
 
@@ -462,8 +463,7 @@ Accept wildcard characters: False
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
 -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
--WarningAction, and -WarningVariable. For more information, see
-[about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
+-WarningAction, and -WarningVariable. For more information, see [about_CommonParameters][02].
 
 ## INPUTS
 
@@ -488,12 +488,20 @@ This cmdlet is only available on Windows platforms.
 
 ## RELATED LINKS
 
-[Get-ChildItem](../microsoft.powershell.management/get-childitem.md)
+[Get-ChildItem][03]
 
-[Get-Credential](../microsoft.powershell.security/get-credential.md)
+[Get-Credential][04]
 
-[Get-Culture](../microsoft.powershell.utility/get-culture.md)
+[Get-Culture][01]
 
-[Get-Item](../microsoft.powershell.management/get-item.md)
+[Get-Item][05]
 
-[New-CimSession](New-CimSession.md)
+[New-CimSession][06]
+
+<!-- link references -->
+[01]: ../Microsoft.PowerShell.Utility/Get-Culture.md
+[02]: https://go.microsoft.com/fwlink/?LinkID=113216
+[03]: ../Microsoft.PowerShell.Management/Get-ChildItem.md
+[04]: ../Microsoft.PowerShell.Security/Get-Credential.md
+[05]: ../Microsoft.PowerShell.Management/Get-Item.md
+[06]: New-CimSession.md

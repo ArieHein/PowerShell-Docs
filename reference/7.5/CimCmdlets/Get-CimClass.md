@@ -26,8 +26,8 @@ Get-CimClass [[-ClassName] <string>] [[-Namespace] <string>] [-Amended]
 ### SessionSet
 
 ```
-Get-CimClass [[-ClassName] <string>] [[-Namespace] <string>] -CimSession <CimSession[]> [-Amended]
- [-OperationTimeoutSec <uint>] [-MethodName <string>] [-PropertyName <string>]
+Get-CimClass [[-ClassName] <string>] [[-Namespace] <string>] -CimSession <CimSession[]>
+ [-Amended] [-OperationTimeoutSec <uint>] [-MethodName <string>] [-PropertyName <string>]
  [-QualifierName <string>] [<CommonParameters>]
 ```
 
@@ -59,8 +59,8 @@ Get-CimClass -ClassName *disk*
 
 ### Example 3: Get the classes with a specific method name
 
-This example gets the classes that start with the name **Win32** and have a method name that starts
-with **Term**.
+This example gets the classes that start with the name **Win32** and have a method name that
+starts with **Term**.
 
 ```powershell
 Get-CimClass -ClassName Win32* -MethodName Term*
@@ -77,8 +77,8 @@ Get-CimClass -ClassName Win32* -PropertyName Handle
 
 ### Example 5: Get the classes with a specific qualifier name
 
-This example gets the classes that start with the name **Win32**, contain the word **Disk** in their
-names and have the specified qualifier **Association**.
+This example gets the classes that start with the name **Win32**, contain the word **Disk** in
+their names and have the specified qualifier **Association**.
 
 ```powershell
 Get-CimClass -ClassName Win32*Disk* -QualifierName Association
@@ -233,9 +233,9 @@ Accept wildcard characters: False
 
 ### -OperationTimeoutSec
 
-Specifies the amount of time that the cmdlet waits for a response from the computer. By default, the
-value of this parameter is 0, which means that the cmdlet uses the default timeout value for the
-server.
+Specifies the amount of time that the cmdlet waits for a response from the computer. By default,
+the value of this parameter is 0, which means that the cmdlet uses the default timeout value for
+the server.
 
 If the **OperationTimeoutSec** parameter is set to a value less than the robust connection retry
 timeout of 3 minutes, network failures that last more than the value of the **OperationTimeoutSec**
@@ -292,8 +292,7 @@ Accept wildcard characters: True
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
 -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
--WarningAction, and -WarningVariable. For more information, see
-[about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
+-WarningAction, and -WarningVariable. For more information, see [about_CommonParameters][01].
 
 ## INPUTS
 
@@ -318,4 +317,8 @@ This cmdlet is only available on Windows platforms.
 
 ## RELATED LINKS
 
-[New-CimSession](New-CimSession.md)
+[New-CimSession][02]
+
+<!-- link references -->
+[01]: https://go.microsoft.com/fwlink/?LinkID=113216
+[02]: New-CimSession.md

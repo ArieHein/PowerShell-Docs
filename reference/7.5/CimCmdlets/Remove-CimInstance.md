@@ -17,31 +17,33 @@ Removes a CIM instance from a computer.
 ### CimInstanceComputerSet (Default)
 
 ```
-Remove-CimInstance [-ResourceUri <Uri>] [-ComputerName <String[]>] [-OperationTimeoutSec <UInt32>]
- [-InputObject] <CimInstance> [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-CimInstance [-ResourceUri <Uri>] [-ComputerName <String[]>]
+ [-OperationTimeoutSec <UInt32>] [-InputObject] <CimInstance> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CimInstanceSessionSet
 
 ```
-Remove-CimInstance -CimSession <CimSession[]> [-ResourceUri <Uri>] [-OperationTimeoutSec <UInt32>]
- [-InputObject] <CimInstance> [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-CimInstance -CimSession <CimSession[]> [-ResourceUri <Uri>]
+ [-OperationTimeoutSec <UInt32>] [-InputObject] <CimInstance> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### QuerySessionSet
 
 ```
 Remove-CimInstance -CimSession <CimSession[]> [[-Namespace] <String>]
- [-OperationTimeoutSec <UInt32>] [-Query] <String> [-QueryDialect <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-OperationTimeoutSec <UInt32>] [-Query] <String> [-QueryDialect <String>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### QueryComputerSet
 
 ```
 Remove-CimInstance [-ComputerName <String[]>] [[-Namespace] <String>]
- [-OperationTimeoutSec <UInt32>] [-Query] <String> [-QueryDialect <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-OperationTimeoutSec <UInt32>] [-Query] <String> [-QueryDialect <String>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,8 +92,7 @@ Remove-CimInstance -InputObject $var
 
 Runs the command using the specified CIM session. Enter a variable that contains the CIM session, or
 a command that creates or gets the CIM session, such as the `New-CimSession` or `Get-CimSession`
-cmdlets. For more information, see
-[about_CimSession](../Microsoft.PowerShell.Core/About/about_CimSession.md).
+cmdlets. For more information, see [about_CimSession][01].
 
 ```yaml
 Type: Microsoft.Management.Infrastructure.CimSession[]
@@ -301,8 +302,7 @@ Accept wildcard characters: False
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
 -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
--WarningAction, and -WarningVariable. For more information, see
-[about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
+-WarningAction, and -WarningVariable. For more information, see [about_CommonParameters][02].
 
 ## INPUTS
 
@@ -327,8 +327,15 @@ This cmdlet is only available on Windows platforms.
 
 ## RELATED LINKS
 
-[New-CimInstance](New-CimInstance.md)
+[New-CimInstance][03]
 
-[Get-CimInstance](get-ciminstance.md)
+[Get-CimInstance][04]
 
-[Set-CimInstance](Set-CimInstance.md)
+[Set-CimInstance][05]
+
+<!-- link references -->
+[01]: ../Microsoft.PowerShell.Core/About/about_CimSession.md
+[02]: https://go.microsoft.com/fwlink/?LinkID=113216
+[03]: New-CimInstance.md
+[04]: Get-CimInstance.md
+[05]: Set-CimInstance.md

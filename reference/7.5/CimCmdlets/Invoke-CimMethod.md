@@ -18,63 +18,65 @@ Invokes a method of a CIM class.
 ### ClassNameComputerSet (Default)
 
 ```
-Invoke-CimMethod [-ClassName] <String> [-ComputerName <String[]>] [[-Arguments] <IDictionary>]
- [-MethodName] <String> [-Namespace <String>] [-OperationTimeoutSec <UInt32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Invoke-CimMethod [-ClassName] <String> [-ComputerName <String[]>]
+ [[-Arguments] <IDictionary>] [-MethodName] <String> [-Namespace <String>]
+ [-OperationTimeoutSec <UInt32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ClassNameSessionSet
 
 ```
-Invoke-CimMethod [-ClassName] <String> -CimSession <CimSession[]> [[-Arguments] <IDictionary>]
- [-MethodName] <String> [-Namespace <String>] [-OperationTimeoutSec <UInt32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Invoke-CimMethod [-ClassName] <String> -CimSession <CimSession[]>
+ [[-Arguments] <IDictionary>] [-MethodName] <String> [-Namespace <String>]
+ [-OperationTimeoutSec <UInt32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceUriComputerSet
 
 ```
-Invoke-CimMethod -ResourceUri <Uri> [-ComputerName <String[]>] [[-Arguments] <IDictionary>]
- [-MethodName] <String> [-Namespace <String>] [-OperationTimeoutSec <UInt32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Invoke-CimMethod -ResourceUri <Uri> [-ComputerName <String[]>]
+ [[-Arguments] <IDictionary>] [-MethodName] <String> [-Namespace <String>]
+ [-OperationTimeoutSec <UInt32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CimInstanceSessionSet
 
 ```
 Invoke-CimMethod [-ResourceUri <Uri>] [-InputObject] <CimInstance> -CimSession <CimSession[]>
- [[-Arguments] <IDictionary>] [-MethodName] <String> [-OperationTimeoutSec <UInt32>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [[-Arguments] <IDictionary>] [-MethodName] <String> [-OperationTimeoutSec <UInt32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CimInstanceComputerSet
 
 ```
-Invoke-CimMethod [-ResourceUri <Uri>] [-InputObject] <CimInstance> [-ComputerName <String[]>]
- [[-Arguments] <IDictionary>] [-MethodName] <String> [-OperationTimeoutSec <UInt32>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Invoke-CimMethod [-ResourceUri <Uri>] [-InputObject] <CimInstance>
+ [-ComputerName <String[]>] [[-Arguments] <IDictionary>] [-MethodName] <String>
+ [-OperationTimeoutSec <UInt32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceUriSessionSet
 
 ```
-Invoke-CimMethod -ResourceUri <Uri> -CimSession <CimSession[]> [[-Arguments] <IDictionary>]
- [-MethodName] <String> [-Namespace <String>] [-OperationTimeoutSec <UInt32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Invoke-CimMethod -ResourceUri <Uri> -CimSession <CimSession[]>
+ [[-Arguments] <IDictionary>] [-MethodName] <String> [-Namespace <String>]
+ [-OperationTimeoutSec <UInt32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CimClassComputerSet
 
 ```
-Invoke-CimMethod [-CimClass] <CimClass> [-ComputerName <String[]>] [[-Arguments] <IDictionary>]
- [-MethodName] <String> [-OperationTimeoutSec <UInt32>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-CimMethod [-CimClass] <CimClass> [-ComputerName <String[]>]
+ [[-Arguments] <IDictionary>] [-MethodName] <String> [-OperationTimeoutSec <UInt32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CimClassSessionSet
 
 ```
-Invoke-CimMethod [-CimClass] <CimClass> -CimSession <CimSession[]> [[-Arguments] <IDictionary>]
- [-MethodName] <String> [-OperationTimeoutSec <UInt32>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-CimMethod [-CimClass] <CimClass> -CimSession <CimSession[]>
+ [[-Arguments] <IDictionary>] [-MethodName] <String> [-OperationTimeoutSec <UInt32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### QueryComputerSet
@@ -155,7 +157,7 @@ to `Invoke-CimMethod`.
 
 ```powershell
 $c = Get-CimClass -ClassName Win32_Process
-Invoke-CimMethod -CimClass $c -MethodName "xyz" -Arguments @{ CommandLine = 'notepad.exe' }
+Invoke-CimMethod -CimClass $c -MethodName "xyz" -Arguments @{CommandLine = 'notepad.exe'}
 ```
 
 ## PARAMETERS
@@ -179,8 +181,8 @@ Accept wildcard characters: False
 
 ### -CimClass
 
-Specifies a CIM class object that represents a CIM class definition on the server. Use this
-parameter when invoking a static method of a class.
+Specifies a CIM class object that represents a CIM class definition on the server.
+Use this parameter when invoking a static method of a class.
 
 You can use the `Get-CimClass` cmdlet to retrieve a class definition from the server.
 
@@ -202,8 +204,7 @@ Accept wildcard characters: False
 
 Runs the command using the specified CIM session. Enter a variable that contains the CIM session, or
 a command that creates or gets the CIM session, such as the `New-CimSession` or `Get-CimSession`
-cmdlets. For more information, see
-[about_CimSession](../Microsoft.PowerShell.Core/About/about_CimSession.md).
+cmdlets. For more information, see [about_CimSession][01].
 
 ```yaml
 Type: Microsoft.Management.Infrastructure.CimSession[]
@@ -446,8 +447,7 @@ Accept wildcard characters: False
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
 -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
--WarningAction, and -WarningVariable. For more information, see
-[about_CommonParameters](../Microsoft.PowerShell.Core/About/about_CommonParameters.md).
+-WarningAction, and -WarningVariable. For more information, see [about_CommonParameters][02].
 
 ## INPUTS
 
@@ -476,10 +476,18 @@ This cmdlet is only available on Windows platforms.
 
 ## RELATED LINKS
 
-[Get-CimClass](get-cimclass.md)
+[Get-CimClass][03]
 
-[Get-CimInstance](get-ciminstance.md)
+[Get-CimInstance][04]
 
-[Get-CimSession](Get-CimSession.md)
+[Get-CimSession][05]
 
-[New-CimSession](New-CimSession.md)
+[New-CimSession][06]
+
+<!-- link references -->
+[01]: ../Microsoft.PowerShell.Core/About/about_CimSession.md
+[02]: ../Microsoft.PowerShell.Core/About/about_CommonParameters.md
+[03]: Get-CimClass.md
+[04]: Get-CimInstance.md
+[05]: Get-CimSession.md
+[06]: New-CimSession.md

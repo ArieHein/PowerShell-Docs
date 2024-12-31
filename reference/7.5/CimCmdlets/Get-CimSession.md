@@ -48,17 +48,17 @@ can use the parameters of `Get-CimSession` to get the sessions that are for part
 you can identify sessions by their names or other identifiers. `Get-CimSession` does not get CIM
 sessions that were created in other PowerShell sessions or that were created on other computers.
 
-For more information about CIM sessions, see [about_CimSession](../Microsoft.PowerShell.Core/About/about_CimSession.md).
+For more information about CIM sessions, see [about_CimSession][01].
 
 ## EXAMPLES
 
 ### Example 1: Get CIM sessions from the current PowerShell session
 
-This example creates CIM sessions using [New-CimSession](New-CimSession.md), and then gets the CIM
-sessions using `Get-CimSession`.
+This example creates CIM sessions using [New-CimSession][02], and then gets the CIM sessions using
+`Get-CimSession`.
 
 ```powershell
-New-CimSession -ComputerName Server01,Server02
+New-CimSession -ComputerName Server01, Server02
 Get-CimSession
 ```
 
@@ -94,11 +94,11 @@ Protocol     : WSMAN
 
 ### Example 3: Get a list of CIM sessions and then format the list
 
-This example gets all CIM sessions in the current PowerShell session and displays a table containing
-only the **ComputerName** and **InstanceID** properties.
+This example gets all CIM sessions in the current PowerShell session and displays a table
+containing only the **ComputerName** and **InstanceID** properties.
 
 ```powershell
-Get-CimSession | Format-Table -Property ComputerName,InstanceId
+Get-CimSession | Format-Table -Property ComputerName, InstanceId
 ```
 
 ```Output
@@ -171,7 +171,7 @@ Specifies the identifier of the CIM session to get. For multiple IDs, use commas
 or use the range operator (`..`) to specify a range of IDs. An **Id** is an integer that uniquely
 identifies the CIM session within the current PowerShell session.
 
-For more information about the range operator, see [about_Operators](../Microsoft.PowerShell.Core/About/about_Operators.md).
+For more information about the range operator, see [about_Operators][03]
 
 ```yaml
 Type: System.UInt32[]
@@ -189,8 +189,8 @@ Accept wildcard characters: False
 
 Specifies the instance IDs of the CIM session to get.
 
-**InstanceId** is a globally-unique identifier (GUID) that uniquely identifies a CIM session. The
-**InstanceId** is unique, even when you have multiple sessions running in PowerShell.
+**InstanceId** is a globally-unique identifier (GUID) that uniquely identifies a CIM session.
+The **InstanceId** is unique, even when you have multiple sessions running in PowerShell.
 
 The **InstanceId** is stored in the **InstanceId** property of the object that represents a CIM
 session.
@@ -228,8 +228,7 @@ Accept wildcard characters: True
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
 -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
--WarningAction, and -WarningVariable. For more information, see
-[about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
+-WarningAction, and -WarningVariable. For more information, see [about_CommonParameters][04].
 
 ## INPUTS
 
@@ -254,10 +253,19 @@ This cmdlet is only available on Windows platforms.
 
 ## RELATED LINKS
 
-[Format-Table](../microsoft.powershell.utility/format-table.md)
+[Format-Table][05]
 
-[New-CimSession](New-CimSession.md)
+[New-CimSession][06]
 
-[Remove-CimSession](remove-cimsession.md)
+[Remove-CimSession][07]
 
-[about_CimSession](../Microsoft.PowerShell.Core/About/about_CimSession.md)
+[about_CimSession][01]
+
+<!-- link references -->
+[01]: ../Microsoft.PowerShell.Core/About/about_CimSession.md
+[02]: New-CimSession.md
+[03]: ../Microsoft.PowerShell.Core/About/about_Operators.md
+[04]: https://go.microsoft.com/fwlink/?LinkID=113216
+[05]: ../Microsoft.PowerShell.Utility/Format-Table.md
+[06]: New-CimSession.md
+[07]: Remove-CimSession.md

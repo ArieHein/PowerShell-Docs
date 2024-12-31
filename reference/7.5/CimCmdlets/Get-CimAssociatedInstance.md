@@ -123,7 +123,7 @@ Accept wildcard characters: False
 
 Runs the command using the specified CIM session. Enter a variable that contains the CIM session, or
 a command that creates or gets the CIM session, such as `New-CimSession` or `Get-CimSession`. For
-more information, see [about_CimSession](../Microsoft.PowerShell.Core/About/about_CimSession.md).
+more information, see [about_CimSession][01].
 
 ```yaml
 Type: Microsoft.Management.Infrastructure.CimSession[]
@@ -222,9 +222,9 @@ Accept wildcard characters: False
 
 ### -OperationTimeoutSec
 
-Specifies the amount of time that the cmdlet waits for a response from the computer. By default, the
-value of this parameter is 0, which means that the cmdlet uses the default timeout value for the
-server.
+Specifies the amount of time that the cmdlet waits for a response from the computer. By default,
+the value of this parameter is 0, which means that the cmdlet uses the default timeout value for
+the server.
 
 If the **OperationTimeoutSec** parameter is set to a value less than the robust connection retry
 timeout of 3 minutes, network failures that last more than the value of the **OperationTimeoutSec**
@@ -280,15 +280,15 @@ Accept wildcard characters: False
 ### -ResultClassName
 
 Specifies the class name of the associated instances. A CIM instance can be associated with one or
-more CIM instances. All associated CIM instances are returned if you don't specify the result class
-name.
+more CIM instances. All associated CIM instances are returned if you don't specify the result
+class name.
 
 By default, the value of this parameter is null, and all associated CIM instances are returned.
 
 You can filter the association results to match a specific class name. Filtering happens on the
 server. If this parameter isn't specified, `Get-CIMAssociatedInstance` returns all existing
-associations. For example, if class A is associated with classes B, C and D, then this parameter can
-be used to restrict the output to a specific type (B, C or D).
+associations. For example, if class A is associated with classes B, C and D, then this parameter
+can be used to restrict the output to a specific type (B, C or D).
 
 ```yaml
 Type: System.String
@@ -306,8 +306,7 @@ Accept wildcard characters: False
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
 -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
--WarningAction, and -WarningVariable. For more information, see
-[about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
+-WarningAction, and -WarningVariable. For more information, see [about_CommonParameters][02].
 
 ## INPUTS
 
@@ -332,6 +331,12 @@ This cmdlet is only available on Windows platforms.
 
 ## RELATED LINKS
 
-[Get-CimClass](get-cimclass.md)
+[Get-CimClass][03]
 
-[Get-CimInstance](get-ciminstance.md)
+[Get-CimInstance][04]
+
+<!-- link references -->
+[01]: ../Microsoft.PowerShell.Core/About/about_CimSession.md
+[02]: https://go.microsoft.com/fwlink/?LinkID=113216
+[03]: Get-CimClass.md
+[04]: Get-CimInstance.md
