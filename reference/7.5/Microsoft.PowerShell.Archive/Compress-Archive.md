@@ -18,51 +18,53 @@ Creates a compressed archive, or zipped file, from specified files and directori
 ### Path (Default)
 
 ```
-Compress-Archive [-Path] <String[]> [-DestinationPath] <String> [-CompressionLevel <String>]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Compress-Archive [-Path] <String[]> [-DestinationPath] <String>
+ [-CompressionLevel <String>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PathWithUpdate
 
 ```
-Compress-Archive [-Path] <String[]> [-DestinationPath] <String> [-CompressionLevel <String>]
- -Update [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Compress-Archive [-Path] <String[]> [-DestinationPath] <String>
+ [-CompressionLevel <String>] -Update [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### PathWithForce
 
 ```
-Compress-Archive [-Path] <String[]> [-DestinationPath] <String> [-CompressionLevel <String>]
- -Force [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Compress-Archive [-Path] <String[]> [-DestinationPath] <String>
+ [-CompressionLevel <String>] -Force [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### LiteralPathWithUpdate
 
 ```
-Compress-Archive -LiteralPath <String[]> [-DestinationPath] <String> [-CompressionLevel <String>]
- -Update [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Compress-Archive -LiteralPath <String[]> [-DestinationPath] <String>
+ [-CompressionLevel <String>] -Update [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### LiteralPathWithForce
 
 ```
-Compress-Archive -LiteralPath <String[]> [-DestinationPath] <String> [-CompressionLevel <String>]
- -Force [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Compress-Archive -LiteralPath <String[]> [-DestinationPath] <String>
+ [-CompressionLevel <String>] -Force [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### LiteralPath
 
 ```
-Compress-Archive -LiteralPath <String[]> [-DestinationPath] <String> [-CompressionLevel <String>]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Compress-Archive -LiteralPath <String[]> [-DestinationPath] <String>
+ [-CompressionLevel <String>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 
 The `Compress-Archive` cmdlet creates a compressed, or zipped, archive file from one or more
-specified files or directories. An archive packages multiple files, with optional compression, into
-a single zipped file for easier distribution and storage. An archive file can be compressed using
-the compression algorithm specified by the **CompressionLevel** parameter.
+specified files or directories. An archive packages multiple files, with optional compression,
+into a single zipped file for easier distribution and storage. An archive file can be compressed
+using the compression algorithm specified by the **CompressionLevel** parameter.
 
 The `Compress-Archive` cmdlet uses the **System.IO.Compression.ZipArchive** API to compress files.
 The API limits the maximum file size to 2GB. For more information, see
