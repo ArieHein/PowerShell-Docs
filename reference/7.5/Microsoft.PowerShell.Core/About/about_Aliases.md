@@ -129,8 +129,8 @@ in the current session, type:
 Get-Alias
 ```
 
-To get particular aliases, use the Name parameter of the `Get-Alias` cmdlet. For
-example, to get aliases that begin with "p", type:
+To get particular aliases, use the Name parameter of the `Get-Alias` cmdlet.
+For example, to get aliases that begin with "p", type:
 
 ```powershell
 Get-Alias -Name p*
@@ -181,7 +181,7 @@ For example, the following command creates the syslog function. This function
 represents the `Get-Eventlog -LogName System` command:
 
 ```powershell
-function Get-SystemEventlog {Get-Eventlog -LogName System}
+function Get-SystemEventlog {Get-EventLog -LogName System}
 Set-Alias -Name syslog -Value Get-SystemEventlog
 ```
 

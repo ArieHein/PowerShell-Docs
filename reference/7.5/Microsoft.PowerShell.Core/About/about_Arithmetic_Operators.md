@@ -203,7 +203,7 @@ result without losing precision. For example:
 (2 + 3.1).GetType().FullName
 ```
 
-```output
+```Output
 5.1
 System.Int32
 System.Double
@@ -217,20 +217,20 @@ is widened to accommodate the result, as in the following example:
 (512MB * 512MB).GetType().FullName
 ```
 
-```output
+```Output
 System.Int32
 System.Double
 ```
 
 The type of the result isn't always the same as one of the operands. In the
-following example, the negative value can't be cast to an unsigned integer, and
-the unsigned integer is too large to be cast to `Int32`:
+following example, the negative value can't be cast to an unsigned integer,
+and the unsigned integer is too large to be cast to `Int32`:
 
 ```powershell
-([int32]::minvalue + [uint32]::maxvalue).GetType().FullName
+([int32]::MinValue + [uint32]::MaxValue).GetType().FullName
 ```
 
-```output
+```Output
 System.Int64
 ```
 
@@ -241,10 +241,10 @@ The `System.Decimal` type is an exception. If either operand has the
 **Decimal** value is an error.
 
 ```powershell
-PS> [Decimal]::maxvalue
+PS> [Decimal]::MaxValue
 79228162514264337593543950335
 
-PS> [Decimal]::maxvalue + 1
+PS> [Decimal]::MaxValue + 1
 RuntimeException: Value was either too large or too small for a Decimal.
 ```
 
@@ -269,8 +269,8 @@ PS> [ulong](9223372036854775807 + 2)
 9223372036854775808
 ```
 
-Defining the larger value as `[ulong]` first avoids the problem and produces the
-correct result.
+Defining the larger value as `[ulong]` first avoids the problem and produces
+the correct result.
 
 ```powershell
 PS> 9223372036854775807ul + 2
@@ -327,7 +327,7 @@ $b = "A","B","C"
 $a + $b
 ```
 
-```output
+```Output
 1
 2
 3
@@ -390,7 +390,7 @@ $hash2 = @{c1="Server01"; c2="Server02"}
 $hash1 + $hash2
 ```
 
-```output
+```Output
 Name                           Value
 ----                           -----
 c2                             Server02
@@ -409,7 +409,7 @@ $hash2 = @{c1="Server01"; c="Server02"}
 $hash1 + $hash2
 ```
 
-```output
+```Output
 OperationStopped:
 Line |
    3 |  $hash1 + $hash2
@@ -427,7 +427,7 @@ $array2 = $array1 + $hash1
 $array2
 ```
 
-```output
+```Output
 0
 Hello World
 
@@ -448,7 +448,7 @@ However, you can't add any other type to a hash table.
 $hash1 + 2
 ```
 
-```output
+```Output
 InvalidOperation: A hash table can only be added to another hash table.
 ```
 
@@ -463,7 +463,7 @@ $array = @()
 $array
 ```
 
-```output
+```Output
 0
 1
 2
@@ -497,7 +497,7 @@ The following examples show how to use the arithmetic operators in expressions
 with PowerShell commands:
 
 ```powershell
-(Get-Date) + (New-TimeSpan -day 1)
+(Get-Date) + (New-TimeSpan -Day 1)
 ```
 
 The parenthesis operator forces the evaluation of the `Get-Date` cmdlet and the
@@ -508,7 +508,7 @@ results are then added using the `+` operator.
 Get-Process | Where-Object { ($_.ws * 2) -gt 50mb }
 ```
 
-```output
+```Output
 Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id ProcessName
 -------  ------    -----      ----- -----   ------     -- -----------
    1896      39    50968      30620   264 1,572.55   1104 explorer

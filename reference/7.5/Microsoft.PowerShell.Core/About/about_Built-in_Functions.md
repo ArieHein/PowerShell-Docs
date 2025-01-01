@@ -60,23 +60,21 @@ specified program instead of the system default.
 
 This is the function that creates the default prompt for the PowerShell command
 line. You can customize your prompt by overriding this function with your own.
-For more information see [about_Prompts](about_Prompts.md).
+For more information see [about_Prompts][01].
 
 ## `Clear-Host`
 
-This function clears the screen. For more information, see
-[Clear-Host](xref:Microsoft.PowerShell.Core.Clear-Host).
+This function clears the screen. For more information, see [Clear-Host][02].
 
 ## `TabExpansion2`
 
-This is the default function to use for tab expansion. For more information, see
-[TabExpansion2](xref:Microsoft.PowerShell.Core.TabExpansion2).
+This is the default function to use for tab expansion. For more information,
+see [TabExpansion2][03].
 
 ## `oss`
 
 This function provides a short hand way to run `Out-String -Stream` in a
-pipeline. For more information, see
-[Out-String](xref:Microsoft.PowerShell.Utility.Out-String).
+pipeline. For more information, see [Out-String][04].
 
 ## `mkdir`
 
@@ -94,3 +92,9 @@ PowerShell create a function for every possible drive letter, `A:` through
 `Z:`.
 
 These drive letter functions aren't defined on non-Windows systems.
+
+<!-- link references -->
+[01]: about_Prompts.md
+[02]: xref:Microsoft.PowerShell.Core.Clear-Host
+[03]: xref:Microsoft.PowerShell.Core.TabExpansion2
+[04]: xref:Microsoft.PowerShell.Utility.Out-String

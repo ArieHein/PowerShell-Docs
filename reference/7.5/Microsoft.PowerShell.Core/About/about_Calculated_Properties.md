@@ -80,8 +80,8 @@ the key-value pairs that each cmdlet supports.
   - `ascending`/`descending` - optional
 
 > [!NOTE]
-> The value of the `expression` can be a script block instead of a
-> hashtable. For more information, see the [Notes][02] section.
+> The value of the `expression` can be a script block instead of a hashtable.
+> For more information, see the [Notes][02] section.
 
 ## Hashtable key definitions
 
@@ -119,7 +119,7 @@ directly, the values are compared to the result of the arithmetic operation
 (modulus of 2).
 
 ```powershell
-Compare-Object @{p=1} @{p=2} -property @{ Expression = { $_.p % 2 } }
+Compare-Object @{p=1} @{p=2} -Property @{ Expression = { $_.p % 2 } }
 ```
 
 ```Output
@@ -212,7 +212,7 @@ the output from `Get-ChildItem`.
 
 ```powershell
 Get-ChildItem *.json -File |
-  Format-List Fullname,
+  Format-List FullName,
               @{
                  name='Modified'
                  expression={$_.LastWriteTime}
@@ -312,7 +312,7 @@ value.
 
 ```powershell
 Get-ChildItem -File |
-  Format-Wide -Property @{e={'{0} ({1:N2}kb)' -f $_.name,($_.length/1kb)}}
+  Format-Wide -Property @{e={'{0} ({1:N2}kb)' -f $_.Name,($_.Length/1kb)}}
 ```
 
 ```Output
@@ -451,7 +451,7 @@ property. This example sorts data from a CSV file in ascending order by
 
 ```powershell
 Import-Csv C:\temp\sales-data.csv |
-  Sort-Object Date, @{expr={$_.UnitsSold}; desc=$true}, Salesperson  |
+  Sort-Object Date, @{expr={$_.UnitsSold}; desc=$true}, Salesperson |
     Select-Object Date, Salesperson, UnitsSold
 ```
 
@@ -518,7 +518,7 @@ Date       Salesperson UnitsSold
 <!-- link references -->
 [01]: /dotnet/standard/base-types/formatting-types
 [02]: #notes
-[03]: about_hash_tables.md
+[03]: about_Hash_Tables.md
 [04]: xref:Microsoft.PowerShell.Utility.Compare-Object
 [05]: xref:Microsoft.PowerShell.Utility.ConvertTo-Html
 [06]: xref:Microsoft.PowerShell.Utility.Format-Custom

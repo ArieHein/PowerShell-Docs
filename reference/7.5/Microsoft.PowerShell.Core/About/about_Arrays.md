@@ -90,12 +90,12 @@ in an array. Even if there is zero or one object.
 
 The syntax of the array operator is as follows:
 
-```syntax
+```Syntax
 @( ... )
 ```
 
-You can use the array operator to create an array of zero or one object. For
-example:
+You can use the array operator to create an array of zero or one object.
+For example:
 
 ```powershell
 $a = @("Hello World")
@@ -343,7 +343,7 @@ while($i -lt 4) {
 ### Count or Length or LongLength
 
 To determine how many items are in an array, use the **Length** property or its
-**Count** alias. **Longlength** is useful if the array contains more than
+**Count** alias. **LongLength** is useful if the array contains more than
 2,147,483,647 elements.
 
 ```powershell
@@ -435,7 +435,7 @@ $c
 The output shows that `$c` is a 1-dimensional array containing the items from
 `$a` and `$b` in row-major order.
 
-```output
+```Output
 Object[]
 Int32[,]
 Object[]
@@ -451,8 +451,8 @@ True
 
 ### Clear
 
-Sets all element values to the _default value_ of the array's element type. The
-`Clear()` method doesn't reset the size of the array.
+Sets all element values to the _default value_ of the array's element type.
+The `Clear()` method doesn't reset the size of the array.
 
 In the following example `$a` is an array of objects.
 
@@ -623,8 +623,8 @@ The value of `mode` must be a [WhereOperatorSelectionMode][02] enum value:
 - `Default` (`0`) - Return all items
 - `First` (`1`) - Return the first item
 - `Last` (`2`) - Return the last item
-- `SkipUntil` (`3`) - Skip items until condition is true, return all the remaining
-  items (including the first item for which the condition is true)
+- `SkipUntil` (`3`) - Skip items until condition is true, return all the
+  remaining items (including the first item for which the condition is true)
 - `Until` (`4`) - Return all items until condition is true
 - `Split` (`5`) - Return an array of two elements
   - The first element contains matching items
@@ -797,8 +797,8 @@ When you pipe an array to `Get-Member`, PowerShell sends the items one at a
 time and `Get-Member` returns the type of each item in the array (ignoring
 duplicates).
 
-When you use the **InputObject** parameter, `Get-Member` returns the members of
-the array.
+When you use the **InputObject** parameter, `Get-Member` returns the members
+of the array.
 
 For example, the following command gets the members of the `$a` array variable.
 

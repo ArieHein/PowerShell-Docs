@@ -78,8 +78,8 @@ Contains the last token in the last line received by the session.
 ### $?
 
 Contains the execution status of the last command. It contains **True** if the
-last command succeeded and **False** if it failed. Parse errors don't result in
-execution, so they don't affect the value of `$?`.
+last command succeeded and **False** if it failed. Parse errors don't result
+in execution, so they don't affect the value of `$?`.
 
 For cmdlets and advanced functions that are run at multiple stages in a
 pipeline, for example in both `process` and `end` blocks, calling
@@ -87,8 +87,8 @@ pipeline, for example in both `process` and `end` blocks, calling
 `$?` to **False**, as does `this.ThrowTerminatingError()` and
 `$PSCmdlet.ThrowTerminatingError()`.
 
-The `Write-Error` cmdlet always sets `$?` to **False** immediately after it's
-executed, but won't set `$?` to **False** for a function calling it:
+The `Write-Error` cmdlet always sets `$?` to **False** immediately after it
+is executed, but won't set `$?` to **False** for a function calling it:
 
 ```powershell
 function Test-WriteError
@@ -744,10 +744,9 @@ isn't considered best practice.
 
 ### MoveNext
 
-The [MoveNext][76] method
-advances the enumerator to the next element of the collection. **MoveNext**
-returns `True` if the enumerator was successfully advanced, `False` if the
-enumerator has passed the end of the collection.
+The [MoveNext][76] method advances the enumerator to the next element of the
+collection. **MoveNext** returns `True` if the enumerator was successfully
+advanced, `False` if the enumerator has passed the end of the collection.
 
 > [!NOTE]
 > The **Boolean** value returned by **MoveNext** is sent to the output stream.
@@ -1132,7 +1131,7 @@ Default (Current): End
 [51]: about_Break.md
 [52]: about_Classes.md
 [53]: about_CommonParameters.md
-[54]: about_comparison_operators.md
+[54]: about_Comparison_Operators.md
 [55]: about_Continue.md
 [56]: about_ForEach.md
 [57]: about_Functions_Advanced_Methods.md
@@ -1142,8 +1141,8 @@ Default (Current): End
 [61]: about_Functions_OutputTypeAttribute.md
 [62]: about_Functions.md
 [63]: about_Hash_Tables.md
-[64]: about_language_keywords.md#exit
-[65]: about_operators.md#call-operator-
+[64]: about_Language_Keywords.md#exit
+[65]: about_Operators.md#call-operator-
 [66]: about_Preference_Variables.md
 [67]: about_PSItem.md
 [68]: about_Pwsh.md

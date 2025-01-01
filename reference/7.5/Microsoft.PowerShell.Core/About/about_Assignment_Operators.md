@@ -43,8 +43,8 @@ convertible to a number.
 Variables are named memory spaces that store values. You store the values in
 variables using the assignment operator `=`. The new value can replace the
 existing value of the variable, or you can append a new value to the existing
-value. For example, the following statement assigns the value PowerShell to the
-`$MyShell` variable:
+value. For example, the following statement assigns the value PowerShell to
+the `$MyShell` variable:
 
 ```powershell
 $MyShell = "PowerShell"
@@ -199,7 +199,7 @@ $a += 2
 $a
 ```
 
-```
+```Output
 6
 ```
 
@@ -646,8 +646,7 @@ $x
 100
 ```
 
-For more information, see
-[Null-coalescing operator][04].
+For more information, see [Null-coalescing operator][04].
 
 ## Microsoft .NET types
 
@@ -885,7 +884,7 @@ Set-Variable -Name a -Value 1, 2, 3
 [01]: /powershell/scripting/learn/glossary#scalar-value
 [02]: about_Arrays.md
 [03]: about_Hash_Tables.md
-[04]: about_operators.md#null-coalescing-operator-
+[04]: about_Operators.md#null-coalescing-operator-
 [05]: about_Variables.md
 [06]: xref:Microsoft.PowerShell.Management.Clear-Item
 [07]: xref:Microsoft.PowerShell.Utility.Clear-Variable
